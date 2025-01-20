@@ -1,0 +1,32 @@
+name: Dispatch Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      borrower_email:
+        description: 'Borrower Email'
+        required: false
+        default: ''
+      has_line_of_credit:
+        description: 'Has Line of Credit'
+        required: false
+        default: true
+      is_revolve:
+        description: 'Is Revolve'
+        required: false
+        default: false
+      main_holder_email:
+        description: 'Main Holder Email'
+        required: false
+        default: ''
+
+jobs:
+  print-parameters:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Parameters
+        run: |
+          echo "Borrower Email: ${{ github.event.inputs.borrower_email }}"
+          echo "Has Line of Credit: ${{ github.event.inputs.has_line_of_credit }}"
+          echo "Is Revolve: ${{ github.event.inputs.is_revolve }}"
+          echo "Main Holder Email: ${{ github.event.inputs.main_holder_email }}"
